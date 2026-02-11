@@ -116,13 +116,25 @@
     document.getElementById('quoteDisplay').textContent = quotes[index];
   }
 
-  // 背景画像をランダムに設定
+// 背景画像を自分の写真からランダムに設定
   function updateBackground() {
-    // Unsplashから「nature(自然)」や「calm(穏やか)」な写真をランダムに取得
-    // 末尾の引数で検索ワードを指定できます
-    const keywords = "nature,landscape,peaceful";
-    const imageUrl = `https://source.unsplash.com/featured/1600x900/?${keywords}&sig=${Math.random()}`;
-    document.body.style.backgroundImage = `url('${imageUrl}')`;
+    // 【ここを書き換え！】アップロードした写真のファイル名をすべて入力してください
+    const images = [
+      "image2.jpg",
+      "image3.jpg",
+      "image4.jpg",
+      "image6.jpg",
+      "image7.jpg",
+      "image8.jpg",
+      "image9.jpg",
+      "image10.jpg",      
+    ];
+
+    // リストの中からランダムに一つ選ぶ
+    const selectedImage = images[Math.floor(Math.random() * images.length)];
+    
+    // 背景に設定
+    document.body.style.backgroundImage = `url('${selectedImage}')`;
   }
 
   // 初期化  
