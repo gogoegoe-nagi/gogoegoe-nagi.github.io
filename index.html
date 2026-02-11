@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -8,33 +7,53 @@
 <style>
   body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: #f0f8f7;
+    /* 背景画像を画面いっぱいに表示 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
+    transition: background-image 0.5s ease-in-out; /* 切り替えをスムーズに */
   }
+  
+  /* 写真の上でも文字を読みやすくするためのオーバーレイ（薄暗い膜） */
+  body::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.2); /* 0.2を大きくするとより暗くなります */
+    z-index: -1;
+  }
+
   .card {
-    background-color: #ffffff;
+    /* 背景を少し透過させておしゃれに */
+    background-color: rgba(255, 255, 255, 0.85); 
+    backdrop-filter: blur(5px); /* 背景をぼかす */
     padding: 30px 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     max-width: 400px;
     width: 90%;
     text-align: center;
   }
+
   .date {
     font-size: 3em;
     font-weight: bold;
     margin-bottom: 20px;
     color: #333;
   }
+
   .quote {
     font-size: 1.2em;
     font-style: italic;
-    color: #555;
-    line-height: 1.5;
+    color: #444;
+    line-height: 1.6;
+    word-break: break-all;
   }
 </style>
 </head>
@@ -81,10 +100,10 @@
     "未来は自分でつくる。"
   ];
 
-  // 今日の日付（○月○日）を表示  
+  // 今日の日付を表示  
   function updateDate() {
     const today = new Date();
-    const month = today.getMonth() + 1; // 月は0から始まるので+1  
+    const month = today.getMonth() + 1;
     const date = today.getDate();
     document.getElementById('dateDisplay').textContent = `${month}月${date}日`;
   }
@@ -93,18 +112,26 @@
   function updateQuote() {
     const today = new Date();
     const day = today.getDate();
-    // 31日を超える場合はループさせる  
     const index = (day - 1) % quotes.length;
     document.getElementById('quoteDisplay').textContent = quotes[index];
+  }
+
+  // 背景画像をランダムに設定
+  function updateBackground() {
+    // Unsplashから「nature(自然)」や「calm(穏やか)」な写真をランダムに取得
+    // 末尾の引数で検索ワードを指定できます
+    const keywords = "nature,landscape,peaceful";
+    const imageUrl = `https://source.unsplash.com/featured/1600x900/?${keywords}&sig=${Math.random()}`;
+    document.body.style.backgroundImage = `url('${imageUrl}')`;
   }
 
   // 初期化  
   function init() {
     updateDate();
     updateQuote();
+    updateBackground();
   }
 
-  // ページ読み込み時に実行  
   window.onload = init;
 </script>
 
