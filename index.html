@@ -11,45 +11,56 @@
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-color: #333; /* 画像読み込み前の予備色 */
+    background-color: #f0f0f0; 
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
+    overflow: hidden;
   }
   
   body::before {
     content: "";
-    position: absolute;
+    position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.3); /* 写真に合わせて暗さを調整してください */
+    background: rgba(0, 0, 0, 0.2); 
     z-index: -1;
   }
 
   .card {
-    background-color: rgba(255, 255, 255, 0.85); 
-    backdrop-filter: blur(8px);
-    padding: 30px 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    background-color: rgba(255, 255, 255, 0.88); 
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
     max-width: 400px;
-    width: 90%;
+    width: 85%;
     text-align: center;
+    z-index: 1;
+  }
+
+  /* --- 追加したメッセージのスタイル --- */
+  .sub-title {
+    font-size: 0.9em;
+    color: #666;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px; /* 日付との間隔 */
   }
 
   .date {
-    font-size: 3em;
+    font-size: 1.5em;
     font-weight: bold;
     margin-bottom: 20px;
     color: #333;
+    line-height: 1.2;
   }
 
   .quote {
-    font-size: 1.2em;
-    font-style: italic;
-    color: #444;
-    line-height: 1.6;
+    font-size: 2.0em;
+    color: #555;
+    line-height: 1.8;
+    word-break: break-all;
   }
 </style>
 </head>
@@ -57,12 +68,12 @@
 
 <div class="card">
   <div class="sub-title">あなたに"凪"をもたらす言葉</div>
+  
   <div class="date" id="dateDisplay">--月--日</div>
   <div class="quote" id="quoteDisplay">名言がここに表示されます</div>
 </div>
 
 <script>
-  // 名言リスト
   const quotes = [
     "振り返って、感謝を伝えたいことは？",
     "あなたの心に安らぎを与えるものは？",
@@ -97,7 +108,6 @@
     "未来は自分でつくる。"
   ];
 
-  // 今日の日付を表示  
   function updateDate() {
     const today = new Date();
     const month = today.getMonth() + 1;
@@ -105,7 +115,6 @@
     document.getElementById('dateDisplay').textContent = `${month}月${date}日`;
   }
 
-  // 名言を更新  
   function updateQuote() {
     const today = new Date();
     const day = today.getDate();
@@ -113,28 +122,18 @@
     document.getElementById('quoteDisplay').textContent = quotes[index];
   }
 
-// 背景画像を自分の写真からランダムに設定
   function updateBackground() {
-    // 【ここを書き換え！】アップロードした写真のファイル名をすべて入力してください
     const images = [
-      "image2.jpeg",
-      "image3.jpeg",
-      "image4.jpeg",
-      "image6.jpeg",
-      "image7.jpeg",
-      "image8.jpeg",
-      "image9.jpeg",
-      "image10.jpeg",      
+      "image2.jpg", "image3.jpg", "image4.jpg",
+      "image6.jpg", "image7.jpg", "image8.jpg",
+      "image9.jpg", "image10.jpg"
     ];
 
-    // リストの中からランダムに一つ選ぶ
     const selectedImage = images[Math.floor(Math.random() * images.length)];
-    
-    // 背景に設定
-    document.body.style.backgroundImage = `url('${selectedImage}')`;
+    document.body.style.backgroundImage = `url('./${selectedImage}')`;
+    console.log("Selected Image:", selectedImage);
   }
 
-  // 初期化  
   function init() {
     updateDate();
     updateQuote();
