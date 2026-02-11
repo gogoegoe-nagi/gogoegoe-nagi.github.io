@@ -1,0 +1,120 @@
+もちろんです！シンプルで清潔感のあるデザインの、日めくりカレンダーWebページのHTMLコードを作成しますね。名言は例として31日分用意し、日付に応じて自動的に切り替わる仕組みにします。
+
+こちらがその完全なHTMLファイルです：
+
+```html  
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>日めくりカレンダー</title>
+<style>
+  body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #f0f8f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+  .card {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+  }
+  .date {
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  .quote {
+    font-size: 1.2em;
+    font-style: italic;
+    color: #555;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="date" id="dateDisplay">--月--日</div>
+  <div class="quote" id="quoteDisplay">名言がここに表示されます</div>
+</div>
+
+<script>
+  // 名言リスト（例として31個のサンプル）
+  const quotes = [
+    "今日も一日頑張りましょう。",
+    "小さな努力が大きな結果を生む。",
+    "笑顔は最高の薬です。",
+    "挑戦なくして成長なし。",
+    "感謝の気持ちを忘れずに。",
+    "今日という日は二度と来ない。",
+    "失敗は成功のもと。",
+    "自分を信じて前進しよう。",
+    "健康は宝物。",
+    "毎日を大切に過ごそう。",
+    "夢に向かって一歩ずつ。",
+    "心に余裕を持とう。",
+    "努力は必ず報われる。",
+    "自然の中でリフレッシュ。",
+    "新しいことにチャレンジ。",
+    "笑顔は人を幸せにする。",
+    "自分らしさを大切に。",
+    "今日できることを明日に延ばさない。",
+    "前向きな心が成功を呼ぶ。",
+    "感謝の心を持ち続ける。",
+    "小さな幸せを見つけよう。",
+    "毎日を楽しもう。",
+    "周囲に感謝を伝えよう。",
+    "心を穏やかに持とう。",
+    "学びは一生続く。",
+    "変化を恐れずに。",
+    "健康第一で過ごそう。",
+    "過去を振り返らず前を向こう。",
+    "人との出会いを大切に。",
+    "自分のペースで進もう。",
+    "未来は自分でつくる。"
+  ];
+
+  // 今日の日付（○月○日）を表示  
+  function updateDate() {
+    const today = new Date();
+    const month = today.getMonth() + 1; // 月は0から始まるので+1  
+    const date = today.getDate();
+    document.getElementById('dateDisplay').textContent = `${month}月${date}日`;
+  }
+
+  // 名言を更新  
+  function updateQuote() {
+    const today = new Date();
+    const day = today.getDate();
+    // 31日を超える場合はループさせる  
+    const index = (day - 1) % quotes.length;
+    document.getElementById('quoteDisplay').textContent = quotes[index];
+  }
+
+  // 初期化  
+  function init() {
+    updateDate();
+    updateQuote();
+  }
+
+  // ページ読み込み時に実行  
+  window.onload = init;
+</script>
+
+</body>
+</html>
+```
+
+### ポイント  
+- **デザイン**はシンプルでリラックスできるように、パステル調の背景とカード風のレイアウトにしています
