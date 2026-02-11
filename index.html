@@ -42,7 +42,8 @@
 
   /* --- 追加したメッセージのスタイル --- */
   .sub-title {
-    font-size: 0.9em;
+    font-size: 1.5em;
+    font-weight: bold;
     color: #666;
     letter-spacing: 0.1em;
     margin-bottom: 8px; /* 日付との間隔 */
@@ -50,7 +51,6 @@
 
   .date {
     font-size: 1.5em;
-    font-weight: bold;
     margin-bottom: 20px;
     color: #333;
     line-height: 1.2;
@@ -125,9 +125,14 @@
 
   function updateBackground() {
     const images = [
-      "image2.jpg", "image3.jpg", "image4.jpg",
-      "image6.jpg", "image7.jpg", "image8.jpg",
-      "image9.jpg", "image10.jpg"
+      "image2.jpeg", 
+      "image3.jpeg", 
+      "image4.jpeg",
+      "image6.jpeg",
+      "image7.jpeg", 
+      "image8.jpeg",
+      "image9.jpeg", 
+      "image10.jpeg"
     ];
 
     const selectedImage = images[Math.floor(Math.random() * images.length)];
