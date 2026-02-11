@@ -3,39 +3,36 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>〜あなたに凪がやってくる〜　日めくり 凪カレンダー</title>
+<title>日常に凪がやってくる　日めくりカレンダー</title>
 <style>
   body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    /* 背景画像を画面いっぱいに表示 */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-color: #333; /* 画像読み込み前の予備色 */
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    transition: background-image 0.5s ease-in-out; /* 切り替えをスムーズに */
   }
   
-  /* 写真の上でも文字を読みやすくするためのオーバーレイ（薄暗い膜） */
   body::before {
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.2); /* 0.2を大きくするとより暗くなります */
+    background: rgba(0, 0, 0, 0.3); /* 写真に合わせて暗さを調整してください */
     z-index: -1;
   }
 
   .card {
-    /* 背景を少し透過させておしゃれに */
     background-color: rgba(255, 255, 255, 0.85); 
-    backdrop-filter: blur(5px); /* 背景をぼかす */
+    backdrop-filter: blur(8px);
     padding: 30px 40px;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     max-width: 400px;
     width: 90%;
     text-align: center;
@@ -53,7 +50,6 @@
     font-style: italic;
     color: #444;
     line-height: 1.6;
-    word-break: break-all;
   }
 </style>
 </head>
