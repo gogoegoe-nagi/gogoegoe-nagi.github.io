@@ -40,13 +40,12 @@
     z-index: 1;
   }
 
-  /* --- 追加したメッセージのスタイル --- */
   .sub-title {
     font-size: 1.0em;
     font-weight: bold;
     color: #666;
     letter-spacing: 0.1em;
-    margin-bottom: 8px; /* 日付との間隔 */
+    margin-bottom: 8px;
   }
 
   .date {
@@ -62,6 +61,33 @@
     color: #555;
     line-height: 1.8;
     word-break: break-all;
+    margin-bottom: 30px; /* リンクボタンとの間隔 */
+  }
+
+  /* --- 追加したリンクボタンのスタイル --- */
+  .link-container {
+    margin-top: 20px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    padding-top: 20px;
+  }
+
+  .note-link {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background-color: #232323; /* note風のダークカラー */
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    letter-spacing: 0.05em;
+  }
+
+  .note-link:hover {
+    background-color: #444;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   }
 </style>
 </head>
@@ -71,6 +97,12 @@
   <div class="sub-title">〜 "凪"をもたらす今日の言葉 〜</div>
   <div class="date" id="dateDisplay">--月--日</div>
   <div class="quote" id="quoteDisplay">名言がここに表示されます</div>
+
+  <div class="link-container">
+    <a href="https://note.com/lacrea_daisuke" target="_blank" rel="noopener noreferrer" class="note-link">
+      noteを読む
+    </a>
+  </div>
 </div>
 
 <script>
@@ -136,7 +168,6 @@
 
     const selectedImage = images[Math.floor(Math.random() * images.length)];
     document.body.style.backgroundImage = `url('./${selectedImage}')`;
-    console.log("Selected Image:", selectedImage);
   }
 
   function init() {
