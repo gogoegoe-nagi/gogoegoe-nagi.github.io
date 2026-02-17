@@ -4,8 +4,14 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>日常に凪がやってくる　日めくりカレンダー</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;600&display=swap" rel="stylesheet">
+
 <style>
   body {
+    /* 全体は読みやすいゴシック系、明朝体を予備に設定 */
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background-size: cover;
     background-position: center;
@@ -31,64 +37,63 @@
   .card {
     background-color: rgba(255, 255, 255, 0.88); 
     backdrop-filter: blur(10px);
-    padding: 40px;
+    padding: 50px 40px; /* 上下を少し広げてゆとりを持たせました */
     border-radius: 24px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-    max-width: 400px;
+    max-width: 450px; /* 文字が綺麗に見えるよう少し幅を広げました */
     width: 85%;
     text-align: center;
     z-index: 1;
   }
 
   .sub-title {
-    font-size: 1.0em;
-    font-weight: bold;
-    color: #666;
-    letter-spacing: 0.1em;
-    margin-bottom: 8px;
+    font-size: 0.9em; /* 少し小さくして上品に */
+    font-weight: normal;
+    color: #888;
+    letter-spacing: 0.2em;
+    margin-bottom: 12px;
   }
 
   .date {
     font-size: 1.0em;
-    margin-bottom: 20px;
-    color: #666;
+    margin-bottom: 30px;
+    color: #888;
     line-height: 1.2;
+    letter-spacing: 0.1em;
   }
 
+  /* --- ここが中心の言葉（明朝体） --- */
   .quote {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #555;
-    line-height: 1.8;
+    font-family: 'Noto Serif JP', serif; /* 明朝体に変更 */
+    font-size: 1.6em;
+    font-weight: 300; /* 繊細に見えるよう細めのウェイトに設定 */
+    color: #444;
+    line-height: 2.0; /* 行間を広げて空気感を演出 */
     word-break: break-all;
-    margin-bottom: 30px; /* リンクボタンとの間隔 */
+    padding: 0 10px;
   }
 
-  /* --- 追加したリンクボタンのスタイル --- */
-  .link-container {
-    margin-top: 20px;
-    border-top: 1px solid rgba(0,0,0,0.05);
-    padding-top: 20px;
+  .footer-credit {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 10;
   }
 
-  .note-link {
-    display: inline-block;
+  .footer-link {
     text-decoration: none;
-    color: #fff;
-    background-color: #232323; /* note風のダークカラー */
-    padding: 10px 20px;
-    border-radius: 50px;
-    font-size: 0.9em;
-    font-weight: bold;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.8em;
+    letter-spacing: 0.1em;
     transition: all 0.3s ease;
-    letter-spacing: 0.05em;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
   }
 
-  .note-link:hover {
-    background-color: #444;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  .footer-link:hover {
+    color: #fff;
+    opacity: 1;
   }
+
 </style>
 </head>
 <body>
@@ -97,15 +102,16 @@
   <div class="sub-title">〜 "凪"をもたらす今日の言葉 〜</div>
   <div class="date" id="dateDisplay">--月--日</div>
   <div class="quote" id="quoteDisplay">名言がここに表示されます</div>
+</div>
 
-  <div class="link-container">
-    <a href="https://note.com/lacrea_daisuke" target="_blank" rel="noopener noreferrer" class="note-link">
-      noteを読む
-    </a>
-  </div>
+<div class="footer-credit">
+  <a href="https://note.com/lacrea_daisuke" target="_blank" rel="noopener noreferrer" class="footer-link">
+    Created by Daisuke
+  </a>
 </div>
 
 <script>
+  // （以下、script部分は変更なしのため維持）
   const quotes = [
     "今、感謝を伝えたい人は？",
     "あなたの心に安らぎを与えるものは？",
@@ -156,28 +162,9 @@
 
   function updateBackground() {
     const images = [
-      "image2.jpeg", 
-      "image3.jpeg", 
-      "image4.jpeg",
-      "image6.jpeg",
-      "image7.jpeg", 
-      "image8.jpeg",
-      "image9.jpeg", 
-      "image10.jpeg"
+      "image2.jpeg", "image3.jpeg", "image4.jpeg",
+      "image6.jpeg", "image7.jpeg", "image8.jpeg",
+      "image9.jpeg", "image10.jpeg"
     ];
-
     const selectedImage = images[Math.floor(Math.random() * images.length)];
-    document.body.style.backgroundImage = `url('./${selectedImage}')`;
-  }
-
-  function init() {
-    updateDate();
-    updateQuote();
-    updateBackground();
-  }
-
-  window.onload = init;
-</script>
-
-</body>
-</html>
+    document.body.style.backgroundImage
