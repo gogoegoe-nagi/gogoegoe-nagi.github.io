@@ -11,7 +11,6 @@
 
 <style>
   body {
-    /* 全体は読みやすいゴシック系、明朝体を予備に設定 */
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background-size: cover;
     background-position: center;
@@ -37,17 +36,17 @@
   .card {
     background-color: rgba(255, 255, 255, 0.88); 
     backdrop-filter: blur(10px);
-    padding: 50px 40px; /* 上下を少し広げてゆとりを持たせました */
+    padding: 50px 40px;
     border-radius: 24px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-    max-width: 450px; /* 文字が綺麗に見えるよう少し幅を広げました */
+    max-width: 450px;
     width: 85%;
     text-align: center;
     z-index: 1;
   }
 
   .sub-title {
-    font-size: 0.9em; /* 少し小さくして上品に */
+    font-size: 0.9em;
     font-weight: normal;
     color: #888;
     letter-spacing: 0.2em;
@@ -62,13 +61,12 @@
     letter-spacing: 0.1em;
   }
 
-  /* --- ここが中心の言葉（明朝体） --- */
   .quote {
-    font-family: 'Noto Serif JP', serif; /* 明朝体に変更 */
+    font-family: 'Noto Serif JP', serif;
     font-size: 1.6em;
-    font-weight: 300; /* 繊細に見えるよう細めのウェイトに設定 */
+    font-weight: 300;
     color: #444;
-    line-height: 2.0; /* 行間を広げて空気感を演出 */
+    line-height: 2.0;
     word-break: break-all;
     padding: 0 10px;
   }
@@ -93,7 +91,6 @@
     color: #fff;
     opacity: 1;
   }
-
 </style>
 </head>
 <body>
@@ -111,7 +108,6 @@
 </div>
 
 <script>
-  // （以下、script部分は変更なしのため維持）
   const quotes = [
     "今、感謝を伝えたい人は？",
     "あなたの心に安らぎを与えるものは？",
@@ -119,52 +115,4 @@
     "もし10年後の幸せなあなたからメッセージがあるとしたら、どんな内容？",
     "この人生で経験したいことは？　そして今から簡単にできることは？",
     "もし何をしても上手くいくとしたら、何をしたい？",
-    "今の生活で、モヤモヤすることは？　その裏にはどんな願いや望みがあるの？",
-    "もし今の経験を持ったまま学生に戻るとしたら、これからどう生きる？",
-    "あなたの心がさらに凪いだとき、最初に見えてくるものは？",
-    "最近、美しいと感じたことは？ そのどこに惹かれた？",
-    "さらに軽やかに生きるため、よりフォーカスしたいことは？",
-    "あなたの幸せのために、手放したいことや辞めたいことは？",
-    "これから何をしたら楽しい？",
-    "これからどんな人生になったら楽しい？",
-    "もし突拍子もないことが実現するとしたら、何を叶えたい？",
-    "超能力が使えるとしたら、何をしたい？",
-    "怖いけど、ほんとは挑戦したいことは？",
-    "あと１年しかないとしたら、どうする？",
-    "前向きな心が成功を呼ぶ。",
-    "感謝の心を持ち続ける。",
-    "小さな幸せを見つけよう。",
-    "毎日を楽しもう。",
-    "周囲に感謝を伝えよう。",
-    "心を穏やかに持とう。",
-    "学びは一生続く。",
-    "変化を恐れずに。",
-    "健康第一で過ごそう。",
-    "過去を振り返らず前を向こう。",
-    "人との出会いを大切に。",
-    "自分のペースで進もう。",
-    "未来は自分でつくる。"
-  ];
-
-  function updateDate() {
-    const today = new Date();
-    const month = today.getMonth() + 1;
-    const date = today.getDate();
-    document.getElementById('dateDisplay').textContent = `${month}月${date}日`;
-  }
-
-  function updateQuote() {
-    const today = new Date();
-    const day = today.getDate();
-    const index = (day - 1) % quotes.length;
-    document.getElementById('quoteDisplay').textContent = quotes[index];
-  }
-
-  function updateBackground() {
-    const images = [
-      "image2.jpeg", "image3.jpeg", "image4.jpeg",
-      "image6.jpeg", "image7.jpeg", "image8.jpeg",
-      "image9.jpeg", "image10.jpeg"
-    ];
-    const selectedImage = images[Math.floor(Math.random() * images.length)];
-    document.body.style.backgroundImage
+    "今の生活で、モヤモ
