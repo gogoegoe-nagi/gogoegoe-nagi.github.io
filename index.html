@@ -103,7 +103,7 @@
 
 <div class="footer-credit">
   <a href="https://note.com/lacrea_daisuke" target="_blank" rel="noopener noreferrer" class="footer-link">
-    Created by Daisuke(Note)
+    Created by Daisuke
   </a>
 </div>
 
@@ -115,4 +115,67 @@
     "もし10年後の幸せなあなたからメッセージがあるとしたら、どんな内容？",
     "この人生で経験したいことは？　そして今から簡単にできることは？",
     "もし何をしても上手くいくとしたら、何をしたい？",
-    "今の生活で、モヤモ
+    "今の生活で、モヤモヤすることは？　その裏にはどんな願いや望みがあるの？",
+    "もし今の経験を持ったまま学生に戻るとしたら、これからどう生きる？",
+    "あなたの心がさらに凪いだとき、最初に見えてくるものは？",
+    "最近、美しいと感じたことは？ そのどこに惹かれた？",
+    "さらに軽やかに生きるため、よりフォーカスしたいことは？",
+    "あなたの幸せのために、手放したいことや辞めたいことは？",
+    "これから何をしたら楽しい？",
+    "これからどんな人生になったら楽しい？",
+    "もし突拍子もないことが実現するとしたら、何を叶えたい？",
+    "超能力が使えるとしたら、何をしたい？",
+    "怖いけど、ほんとは挑戦したいことは？",
+    "あと１年しかないとしたら、どうする？",
+    "前向きな心が成功を呼ぶ。",
+    "感謝の心を持ち続ける。",
+    "小さな幸せを見つけよう。",
+    "毎日を楽しもう。",
+    "周囲に感謝を伝えよう。",
+    "心を穏やかに持とう。",
+    "学びは一生続く。",
+    "変化を恐れずに。",
+    "健康第一で過ごそう。",
+    "過去を振り返らず前を向こう。",
+    "人との出会いを大切に。",
+    "自分のペースで進もう。",
+    "未来は自分でつくる。"
+  ];
+
+  function updateDate() {
+    const today = new Date();
+    const month = today.getMonth() + 1;
+    const date = today.getDate();
+    document.getElementById('dateDisplay').textContent = `${month}月${date}日`;
+  }
+
+  function updateQuote() {
+    const today = new Date();
+    const day = today.getDate();
+    const index = (day - 1) % quotes.length;
+    document.getElementById('quoteDisplay').textContent = quotes[index];
+  }
+
+  function updateBackground() {
+    // 画像の拡張子が .jpeg であることを確認してください。
+    // もし .jpg であればここを修正します。
+    const images = [
+      "image2.jpeg", "image3.jpeg", "image4.jpeg",
+      "image6.jpeg", "image7.jpeg", "image8.jpeg",
+      "image9.jpeg", "image10.jpeg"
+    ];
+    const selectedImage = images[Math.floor(Math.random() * images.length)];
+    document.body.style.backgroundImage = `url('./${selectedImage}')`;
+  }
+
+  function init() {
+    updateDate();
+    updateQuote();
+    updateBackground();
+  }
+
+  window.onload = init;
+</script>
+
+</body>
+</html>
