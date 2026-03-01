@@ -55,10 +55,25 @@
 
   .date {
     font-size: 1.0em;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     color: #888;
     line-height: 1.2;
     letter-spacing: 0.1em;
+  }
+
+  /* 追加したテキストエリアのスタイル */
+  .extra-info {
+    font-size: 0.85em;
+    color: #999;
+    margin-bottom: 8px;
+    letter-spacing: 0.1em;
+    min-height: 1.2em;
+  }
+  
+  .quote-container {
+    margin-top: 30px;
+    border-top: 1px solid rgba(0,0,0,0.05); /* 境界線を薄く追加 */
+    padding-top: 20px;
   }
 
   .quote {
@@ -98,7 +113,13 @@
 <div class="card">
   <div class="sub-title">〜 あなたの凪に繋がる今日の言葉 〜</div>
   <div class="date" id="dateDisplay">--月--日</div>
-  <div class="quote" id="quoteDisplay">名言がここに表示されます</div>
+  
+  <div class="extra-info" id="extraDisplay1"></div>
+  <div class="extra-info" id="extraDisplay2"></div>
+
+  <div class="quote-container">
+    <div class="quote" id="quoteDisplay"></div>
+  </div>
 </div>
 
 <div class="footer-credit">
@@ -108,6 +129,7 @@
 </div>
 
 <script>
+  // メインの問いかけリスト
   const quotes = [
     "今、感謝を伝えたい人は？どんな感謝を伝えたい？",
     "あなたに心地良さをもたらすモノは？",
@@ -134,6 +156,30 @@
     "目の前に今のあなたと同じ境遇の人がいます。なんて声をかける？",
   ];
 
+  // 追加の欄1：短い一言など
+  const subQuotes1 = [
+    "深く、静かな呼吸を。",
+    "今日も、あなたらしく。",
+    "空を見上げてみて。",
+    "心に余白を。",
+    "一歩ずつ、丁寧に。",
+    "直感を信じて。",
+    "身体の感覚に意識を向けて。",
+    "ありのままの自分を抱きしめて。"
+  ];
+
+  // 追加の欄2：サブのメッセージなど
+  const subQuotes2 = [
+    "世界はあなたに優しい。",
+    "すべてはうまくいっています。",
+    "答えは、すでにあなたの中に。",
+    "新しい風が吹き始めています。",
+    "今日は、休息のご褒美を。",
+    "あなたの輝きを、忘れないで。",
+    "凪のひとときを大切に。",
+    "小さな幸せを見つけよう。"
+  ];
+
   function updateDate() {
     const today = new Date();
     const month = today.getMonth() + 1;
@@ -144,13 +190,18 @@
   function updateQuote() {
     const today = new Date();
     const day = today.getDate();
-    const index = (day - 1) % quotes.length;
-    document.getElementById('quoteDisplay').textContent = quotes[index];
+    
+    // それぞれのリストから日付に基づいて選択（リストの長さが違ってもOK）
+    const mainIndex = (day - 1) % quotes.length;
+    const subIndex1 = (day - 1) % subQuotes1.length;
+    const subIndex2 = (day - 1) % subQuotes2.length;
+
+    document.getElementById('quoteDisplay').textContent = quotes[mainIndex];
+    document.getElementById('extraDisplay1').textContent = subQuotes1[subIndex1];
+    document.getElementById('extraDisplay2').textContent = subQuotes2[subIndex2];
   }
 
   function updateBackground() {
-    // 画像の拡張子が .jpeg であることを確認してください。
-    // もし .jpg であればここを修正します。
     const images = [
       "image2.jpeg", "image3.jpeg", "image4.jpeg",
       "image6.jpeg", "image7.jpeg", "image8.jpeg",
