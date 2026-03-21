@@ -61,7 +61,6 @@
     letter-spacing: 0.1em;
   }
 
-  /* 追加したテキストエリアのスタイル */
   .extra-info {
     font-size: 1.0em;
     color: #444;
@@ -72,8 +71,16 @@
   
   .quote-container {
     margin-top: 30px;
-    border-top: 1px solid rgba(0,0,0,0.05); /* 境界線を薄く追加 */
+    border-top: 1px solid rgba(0,0,0,0.05);
     padding-top: 20px;
+  }
+
+  /* 追加：メインの問いかけの上のラベルスタイル */
+  .question-label {
+    font-size: 0.8em;
+    color: #999;
+    letter-spacing: 0.1em;
+    margin-bottom: 15px;
   }
 
   .quote {
@@ -118,6 +125,7 @@
   <div class="extra-info" id="extraDisplay2"></div>
 
   <div class="quote-container">
+    <div class="question-label">〜 あなたの凪に繋がる今日の問い 〜</div>
     <div class="quote" id="quoteDisplay"></div>
   </div>
 </div>
@@ -129,7 +137,6 @@
 </div>
 
 <script>
-  // メインの問いかけリスト
   const quotes = [
     "今、感謝を伝えたい人は？どんな感謝を伝えたい？",
     "あなたに心地良さをもたらすモノは？",
@@ -156,7 +163,6 @@
     "目の前に今のあなたと同じ境遇の人がいます。なんて声をかける？",
   ];
 
-  // 追加の欄1：短い一言など
   const subQuotes1 = [
     "深く、静かな呼吸を。",
     "今日も、あなたらしく。",
@@ -170,7 +176,6 @@
     "悦びの波動が、あなたを導く。",
   ];
 
-  // 追加の欄2：サブのメッセージなど
   const subQuotes2 = [
     "世界は、あなたに優しい。",
     "すべては、うまくいっている。",
@@ -197,7 +202,6 @@
     const today = new Date();
     const day = today.getDate();
     
-    // それぞれのリストから日付に基づいて選択（リストの長さが違ってもOK）
     const mainIndex = (day - 1) % quotes.length;
     const subIndex1 = (day - 1) % subQuotes1.length;
     const subIndex2 = (day - 1) % subQuotes2.length;
