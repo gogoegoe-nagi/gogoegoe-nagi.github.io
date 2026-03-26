@@ -555,7 +555,7 @@
   // フェードインを上から順番に適用
   function applyFadeDelays() {
     const items = document.querySelectorAll('.fade-item');
-    const baseDelay = 0.2;
+    const baseDelay = 0.5;
     const step = 0.45;
     items.forEach((el, i) => {
       el.style.animationDelay = (baseDelay + i * step) + 's';
